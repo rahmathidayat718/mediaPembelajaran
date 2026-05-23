@@ -1,0 +1,404 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Baloo 2", cursive;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: url("../assets/home/bg1.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+  width: 100%;
+  height: 100vh;
+
+  padding: 20px 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 35px;
+
+  position: relative;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* =========================
+   PANEL UI
+========================= */
+
+.profile-card,
+.side-menu,
+.mission-box {
+  background: #f9e8c9;
+
+  border: 5px solid #7a4c25;
+
+  border-radius: 28px;
+
+  box-shadow:
+    inset 0 4px 0 rgba(255, 255, 255, 0.6),
+    0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-card {
+  padding: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 75px;
+  height: 75px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 42px;
+
+  border: 4px solid #8b5a2b;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  color: #4b250f;
+
+  font-size: 28px;
+  line-height: 1;
+}
+
+.profile-info p {
+  color: #6a3c18;
+
+  margin-top: 2px;
+
+  font-size: 18px;
+}
+
+.xp-bar {
+  width: 100%;
+  height: 18px;
+
+  margin-top: 8px;
+
+  background: #6a3c18;
+
+  border-radius: 30px;
+
+  overflow: hidden;
+}
+
+.xp-fill {
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(to right, #9cff4f, #3fba00);
+}
+
+/* =========================
+   MASKOT
+========================= */
+
+.mascot {
+  font-size: 110px;
+
+  text-align: center;
+
+  margin-top: -10px;
+
+  animation: floatMascot 3s ease-in-out infinite;
+}
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu {
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.side-menu a {
+  text-decoration: none;
+
+  color: #4b250f;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  transform: translateX(8px);
+}
+
+/* =========================
+   CENTER
+========================= */
+
+.main-content {
+  width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
+/* =========================
+   WOOD TITLE
+========================= */
+
+.wood-title {
+  width: 760px;
+  height: 120px;
+
+  background: url("../assets/home/papan1.png");
+
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  font-size: 28px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+
+  margin-bottom: -10px;
+
+  z-index: 3;
+}
+
+/* =========================
+   MAIN PANEL
+========================= */
+
+.main-panel {
+  width: 100%;
+
+  min-height: 720px;
+
+  background: #efe0c2;
+
+  border-radius: 38px;
+
+  border: 6px solid #8a572b;
+
+  padding: 70px 45px 35px;
+
+  box-shadow:
+    inset 0 4px 0 rgba(255, 255, 255, 0.5),
+    0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.main-panel h1 {
+  text-align: center;
+
+  color: #5a2d13;
+
+  font-size: 38px;
+
+  margin-bottom: 30px;
+}
+
+/* =========================
+   MENU GRID
+========================= */
+
+.menu-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.menu-card {
+  height: 180px;
+
+  border-radius: 30px;
+
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  border: 5px solid rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+    inset 0 5px 0 rgba(255, 255, 255, 0.3),
+    0 8px 14px rgba(0, 0, 0, 0.2);
+
+  transition: 0.3s;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.icon {
+  font-size: 64px;
+}
+
+.menu-card h2 {
+  margin-top: 8px;
+
+  font-size: 28px;
+
+  text-align: center;
+}
+
+/* COLORS */
+
+.green {
+  background: linear-gradient(to bottom, #98e83e, #5dbd00);
+}
+
+.blue {
+  background: linear-gradient(to bottom, #58d7ff, #0088ff);
+}
+
+.orange {
+  background: linear-gradient(to bottom, #ffcf59, #ff8a00);
+}
+
+.red {
+  background: linear-gradient(to bottom, #ff9b65, #ff5a1f);
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-section {
+  margin-top: 35px;
+}
+
+.progress-section h3 {
+  text-align: center;
+
+  color: #5b2f10;
+
+  font-size: 30px;
+
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 28px;
+
+  background: #7a4c25;
+
+  border-radius: 40px;
+
+  overflow: hidden;
+}
+
+.progress-fill2 {
+  width: 65%;
+  height: 100%;
+
+  background: linear-gradient(to right, #a6ff4d, #4cb800);
+}
+
+/* =========================
+   MISSION
+========================= */
+
+.mission-box {
+  width: 260px;
+
+  padding: 22px;
+
+  position: absolute;
+
+  right: 30px;
+  bottom: 25px;
+}
+
+.mission-box h2 {
+  color: #5b2f10;
+
+  font-size: 32px;
+}
+
+.mission-box p {
+  margin-top: 10px;
+
+  color: #4d2b12;
+
+  font-size: 24px;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes floatMascot {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
