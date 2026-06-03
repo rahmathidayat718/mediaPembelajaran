@@ -176,27 +176,27 @@ body {
   animation: sunPulse 4s ease-in-out infinite;
 }
 
-.sun-glow::before {
-  content: "";
-
+.sun {
   position: absolute;
-
-  top: -35px;
-  left: -35px;
-
-  width: 240px;
-  height: 240px;
-
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #c0660bff, #ed971fff);
   border-radius: 50%;
+  box-shadow: 0 0 28px 12px rgba(255, 210, 0, 0.55);
+  z-index: 5;
+  animation: sunPulse 3s ease-in-out infinite;
+}
 
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 180, 0.35) 0%,
-    rgba(255, 220, 0, 0.18) 45%,
-    rgba(255, 200, 0, 0) 75%
-  );
-
-  animation: sunAura 5s ease-in-out infinite;
+.sun::before {
+  content: "☀️";
+  font-size: 70px;
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* =========================================
