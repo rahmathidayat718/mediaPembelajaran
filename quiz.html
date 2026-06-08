@@ -4,67 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Quiz</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Tebing Kuis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/quiz.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <a href="home.html" class="btn-back">⬅ Kembali</a>
 
-        <h1>Quiz Pembelajaran</h1>
-
-        <div id="start-container">
-
-            <input type="text" id="student-name" placeholder="Masukkan nama">
-
-            <br><br>
-
-            <button id="start-btn">
-                Mulai Quiz
-            </button>
-
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>🎯 Tebing Kuis</h1>
+            <p>Uji pengetahuanmu tentang keajaiban Fotosintesis!</p>
         </div>
 
-        <div id="quiz-container" style="display: none;">
+        <form id="quizForm" action="" method="POST">
 
-            <p id="progress"></p>
+            <div class="input-section">
+                <label for="nama">Nama Petualang:</label>
+                <input type="text" id="nama" name="nama" placeholder="Ketik namamu di sini..." required>
+            </div>
 
-            <p id="timer">
-                Waktu: 30
-            </p>
+            <div class="question-card">
+                <h3>1. Apa saja "bahan dapur" utama yang dibutuhkan tumbuhan untuk melakukan fotosintesis?</h3>
+                <label class="option">
+                    <input type="radio" name="soal_1" value="A" required>
+                    <span class="custom-radio"></span>
+                    Air, Udara, dan Tanah
+                </label>
+                <label class="option">
+                    <input type="radio" name="soal_1" value="B">
+                    <span class="custom-radio"></span>
+                    Cahaya Matahari, Air, dan Karbon Dioksida
+                </label>
+                <label class="option">
+                    <input type="radio" name="soal_1" value="C">
+                    <span class="custom-radio"></span>
+                    Gula, Garam, dan Sinar Bulan
+                </label>
+            </div>
 
-            <h2 id="question"></h2>
+            <div class="question-card">
+                <h3>2. Di bagian tubuh tumbuhan manakah proses "memasak" atau fotosintesis ini terjadi?</h3>
+                <label class="option">
+                    <input type="radio" name="soal_2" value="A" required>
+                    <span class="custom-radio"></span>
+                    Di dalam Akar
+                </label>
+                <label class="option">
+                    <input type="radio" name="soal_2" value="B">
+                    <span class="custom-radio"></span>
+                    Di Batang Pohon
+                </label>
+                <label class="option">
+                    <input type="radio" name="soal_2" value="C">
+                    <span class="custom-radio"></span>
+                    Di dalam Daun
+                </label>
+            </div>
 
-            <div id="answer-buttons"></div>
+            <div class="question-card">
+                <h3>3. Gas apa yang dihasilkan oleh tumbuhan dari proses fotosintesis yang sangat penting untuk kita
+                    bernapas?</h3>
+                <label class="option">
+                    <input type="radio" name="soal_3" value="A" required>
+                    <span class="custom-radio"></span>
+                    Oksigen
+                </label>
+                <label class="option">
+                    <input type="radio" name="soal_3" value="B">
+                    <span class="custom-radio"></span>
+                    Karbon Dioksida
+                </label>
+                <label class="option">
+                    <input type="radio" name="soal_3" value="C">
+                    <span class="custom-radio"></span>
+                    Helium
+                </label>
+            </div>
 
-            <br>
-
-            <button id="next-btn">
-                Soal Berikutnya
-            </button>
-
-        </div>
-
-        <div id="result-container" style="display: none;">
-
-            <h2>Quiz Selesai</h2>
-
-            <p id="final-name"></p>
-
-            <p id="score"></p>
-
-            <button onclick="restartQuiz()">
-                Ulangi Quiz
-            </button>
-
-        </div>
-
+            <button type="submit" class="btn-submit">🚀 Kirim Jawaban!</button>
+        </form>
     </div>
-
-    <script src="js/quiz.js"></script>
 
 </body>
 
