@@ -6,24 +6,22 @@
 }
 
 body {
-  background: #e6f4d5; /* Warna hijau muda pastel biar seger */
-  background-image:
-    radial-gradient(#c5e1a5 20%, transparent 20%),
-    radial-gradient(#c5e1a5 20%, transparent 20%);
-  background-size: 40px 40px;
-  background-position:
-    0 0,
-    20px 20px; /* Bikin motif polkadot samar-samar */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Mengunci layar utama agar tidak bisa discroll */
+  /* Ganti URL di bawah ini dengan nama file gambar papan lu */
+  background: url("../assets/bg_materii.png") center center / cover no-repeat;
   color: #5a3200;
-  padding: 20px;
-  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* =========================================
    TOMBOL KEMBALI
 ========================================= */
 .btn-back {
-  position: fixed;
+  position: absolute;
   top: 20px;
   left: 20px;
   background: #ffcc80;
@@ -47,14 +45,39 @@ body {
 }
 
 /* =========================================
-   WADAH UTAMA (CONTAINER)
+   WADAH UTAMA (CONTAINER) - AREA PAPAN
 ========================================= */
 .materi-container {
+  /* Mengatur ukuran agar pas di dalam area kayu pada gambar */
+  width: 75%;
   max-width: 800px;
-  margin: 60px auto 40px;
+  height: 78%; /* Membatasi tinggi agar tidak keluar papan */
+  margin-top: 0%; /* Disesuaikan sedikit agar posisinya pas di tengah kayu */
+
+  /* Ini kunci utamanya biar bisa scroll di dalem papan aja */
+  overflow-y: auto;
+  padding: 10px 20px 20px 20px;
+
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+/* Kustomisasi Scrollbar Biar Nyambung Tema Kayu/Hutan */
+.materi-container::-webkit-scrollbar {
+  width: 10px;
+}
+.materi-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.materi-container::-webkit-scrollbar-thumb {
+  background: #8bc34a;
+  border-radius: 10px;
+  border: 2px solid #558b2f;
+}
+.materi-container::-webkit-scrollbar-thumb:hover {
+  background: #558b2f;
 }
 
 /* =========================================
@@ -62,10 +85,16 @@ body {
 ========================================= */
 .materi-header {
   text-align: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(
+    255,
+    255,
+    255,
+    0.85
+  ); /* Sedikit diturunin opacitynya biar nyatu sama kayu */
   padding: 20px;
   border-radius: 20px;
   border: 4px dashed #8bc34a;
+  flex-shrink: 0;
 }
 
 .materi-header h1 {
@@ -84,12 +113,13 @@ body {
    KARTU-KARTU (CARDS)
 ========================================= */
 .card {
-  background: #fffafa;
-  border: 4px solid #c8a96e; /* Mengikuti warna border di home */
+  background: rgba(255, 250, 250, 0.95);
+  border: 4px solid #c8a96e;
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 8px 0 rgba(200, 169, 110, 0.5);
   transition: transform 0.2s;
+  flex-shrink: 0;
 }
 
 .card:hover {
@@ -119,6 +149,7 @@ body {
   padding: 5px 20px;
   border-radius: 30px;
   border: 3px solid #ffb300;
+  flex-shrink: 0;
 }
 
 /* =========================================
@@ -128,6 +159,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
+  flex-shrink: 0;
 }
 
 .item,
@@ -162,6 +194,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  flex-shrink: 0;
 }
 
 .item-result {
@@ -186,7 +219,9 @@ body {
   }
 }
 
-/* Responsive buat HP */
+/* =========================================
+   RESPONSIVE UNTUK HP
+========================================= */
 @media (max-width: 600px) {
   .btn-back {
     top: 10px;
@@ -195,6 +230,8 @@ body {
     padding: 6px 12px;
   }
   .materi-container {
-    margin-top: 70px;
+    width: 85%;
+    height: 82%; /* Gedein juga buat di HP dari 70% ke 82% */
+    margin-top: 2%; /* Sesuaikan biar gak mentok tombol kembali */
   }
 }
