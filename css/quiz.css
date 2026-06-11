@@ -6,24 +6,27 @@
 }
 
 body {
-  background: #e1f5fe; /* Biru langit pastel */
-  background-image:
-    radial-gradient(#b3e5fc 20%, transparent 20%),
-    radial-gradient(#b3e5fc 20%, transparent 20%);
-  background-size: 40px 40px;
-  background-position:
-    0 0,
-    20px 20px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Kunci layar biar nggak scroll full */
+
+  /* Panggil gambar tebing yang kamu download di sini */
+  background: url("../assets/bg_kuis.png") center center / cover no-repeat;
+
+  /* Warna fallback kalau gambarnya belum ada */
+  background-color: #87ceeb;
+
   color: #5a3200;
-  padding: 20px;
-  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* =========================================
    TOMBOL KEMBALI
 ========================================= */
 .btn-back {
-  position: fixed;
+  position: absolute; /* Ganti jadi absolute biar konsisten */
   top: 20px;
   left: 20px;
   background: #ffcc80;
@@ -47,53 +50,91 @@ body {
 }
 
 /* =========================================
-   WADAH KUIS
+   CONTAINER PAPAN BATU (TEBING)
 ========================================= */
 .quiz-container {
-  max-width: 700px;
-  margin: 60px auto 40px;
+  /* 1. Kita kecilin dikit ukurannya biar background alamnya lebih terekspos */
+  width: 65%;
+  max-width: 650px;
+  height: 75%;
+
+  /* 2. Kita dorong ke kanan dan agak ke bawah menjauhi elang, 
+          seolah-olah papannya nempel di tebing! */
+  margin-left: 22%;
+  margin-top: 5%;
+
+  /* Background papan batu muda */
+  background: rgba(240, 244, 248, 0.95);
+  border: 8px solid #607d8b;
+  border-radius: 24px;
+  padding: 20px 25px; /* Padding dikurangi dikit biar isinya pas */
+
+  /* Efek bayangan batu */
+  box-shadow: 0 12px 0 rgba(69, 90, 100, 0.6);
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px; /* Jarak antar elemen dirapatkan dikit */
+  overflow-y: auto;
 }
 
+/* Custom Scrollbar Tema Batu */
+.quiz-container::-webkit-scrollbar {
+  width: 10px;
+}
+.quiz-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.quiz-container::-webkit-scrollbar-thumb {
+  background: #90a4ae;
+  border-radius: 10px;
+  border: 2px solid #607d8b;
+}
+
+/* =========================================
+HEADER KUIS
+========================================= */
 .quiz-header {
   text-align: center;
-  background: #fff;
-  padding: 20px;
-  border-radius: 20px;
-  border: 4px dashed #29b6f6;
+  background: #cfd8dc;
+  padding: 15px;
+  border-radius: 16px;
+  border: 4px dashed #78909c;
+  flex-shrink: 0;
 }
 
 .quiz-header h1 {
   font-size: clamp(28px, 5vw, 42px);
-  color: #0277bd;
-  text-shadow: 2px 2px 0px #e1f5fe;
+  color: #263238;
+  text-shadow: 2px 2px 0px #fff;
+  margin-bottom: 5px;
 }
 
 .quiz-header p {
   font-size: 18px;
   font-weight: 600;
+  color: #455a64;
 }
 
 /* =========================================
-   INPUT NAMA & KARTU SOAL
+INPUT NAMA & KARTU SOAL
 ========================================= */
 .input-section,
 .question-card {
-  background: #fffafa;
-  border: 4px solid #c8a96e;
+  background: #ffffff;
+  border: 4px solid #90a4ae; /* Border kartu abu-abu kebiruan */
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 8px 0 rgba(200, 169, 110, 0.5);
-  margin-bottom: 20px;
+  box-shadow: 0 6px 0 rgba(144, 164, 174, 0.4);
+  flex-shrink: 0;
 }
 
 .input-section label {
   display: block;
   font-size: 20px;
   font-weight: 800;
-  color: #d84315;
+  color: #37474f;
   margin-bottom: 8px;
 }
 
@@ -101,7 +142,7 @@ body {
   width: 100%;
   padding: 12px 16px;
   font-size: 18px;
-  border: 3px solid #ccc;
+  border: 3px solid #b0bec5;
   border-radius: 12px;
   outline: none;
   transition: border-color 0.3s;
@@ -113,18 +154,18 @@ body {
 
 .question-card h3 {
   font-size: 20px;
-  color: #4e342e;
+  color: #263238;
   margin-bottom: 16px;
   line-height: 1.4;
 }
 
 /* =========================================
-   PILIHAN GANDA (CUSTOM RADIO)
+PILIHAN GANDA (CUSTOM RADIO)
 ========================================= */
 .option {
   display: flex;
   align-items: center;
-  background: #f5f5f5;
+  background: #f5f7f8;
   padding: 12px 16px;
   border-radius: 12px;
   margin-bottom: 10px;
@@ -132,35 +173,35 @@ body {
   border: 2px solid transparent;
   transition:
     background 0.2s,
-    border 0.2s;
+    border 0.2s,
+    transform 0.1s;
   font-size: 16px;
   font-weight: 600;
 }
 
 .option:hover {
-  background: #e3f2fd;
-  border: 2px solid #64b5f6;
+  background: #e1f5fe;
+  border: 2px solid #81d4fa;
+  transform: translateX(5px); /* Efek geser dikit pas dihover */
 }
 
-/* Sembunyikan radio button asli */
 .option input[type="radio"] {
   display: none;
 }
 
-/* Lingkaran radio custom */
 .custom-radio {
   width: 24px;
   height: 24px;
-  border: 3px solid #ccc;
+  border: 3px solid #90a4ae;
   border-radius: 50%;
   margin-right: 12px;
   display: inline-block;
   position: relative;
+  background: #fff;
 }
 
-/* Efek saat dipilih */
 .option input[type="radio"]:checked + .custom-radio {
-  border-color: #4caf50;
+  border-color: #0288d1;
 }
 
 .option input[type="radio"]:checked + .custom-radio::after {
@@ -171,12 +212,13 @@ body {
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background: #4caf50;
+  background: #0288d1; /* Warna biru untuk jawaban yg dipilih */
   border-radius: 50%;
 }
 
 .option input[type="radio"]:checked {
-  background: #e8f5e9;
+  background: #e1f5fe;
+  border-color: #0288d1;
 }
 
 /* =========================================
@@ -185,28 +227,32 @@ body {
 .btn-submit {
   display: block;
   width: 100%;
-  background: #8bc34a;
+  background: #03a9f4; /* Warna tombol jadi biru air */
   color: white;
   font-size: 24px;
   font-weight: 800;
   padding: 16px;
-  border: 4px solid #558b2f;
+  border: 4px solid #0277bd;
   border-radius: 16px;
   cursor: pointer;
-  box-shadow: 0 6px 0 #558b2f;
+  box-shadow: 0 8px 0 #0277bd;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition:
     transform 0.1s,
     box-shadow 0.1s;
+  margin-top: 10px;
+  flex-shrink: 0;
 }
 
 .btn-submit:active {
-  transform: translateY(6px);
-  box-shadow: 0 0 0 #558b2f;
+  transform: translateY(8px);
+  box-shadow: 0 0 0 #0277bd;
 }
 
-/* Responsive buat HP */
+/* =========================================
+   RESPONSIVE UNTUK HP
+========================================= */
 @media (max-width: 600px) {
   .btn-back {
     top: 10px;
@@ -215,6 +261,11 @@ body {
     padding: 6px 12px;
   }
   .quiz-container {
-    margin-top: 70px;
+    width: 90%;
+    height: 85%;
+    padding: 20px 15px;
+  }
+  .btn-submit {
+    font-size: 20px;
   }
 }

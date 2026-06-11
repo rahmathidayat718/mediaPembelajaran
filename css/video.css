@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Baloo 2", cursive;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Mengunci layar agar tidak bisa discroll full */
+
+  /* Menggunakan background yang sama dengan materi agar serasi */
+  background: url("../assets/bg_materii.png") center center / cover no-repeat;
+  color: #5a3200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   CONTAINER PAPAN VIDEO
+========================================= */
+.video-container {
+  /* Disamakan ukurannya dengan materi.css biar pas di dalam kayu */
+  width: 75%;
+  max-width: 800px;
+  height: 78%;
+  margin-top: 0%;
+
+  background: rgba(255, 250, 250, 0.95);
+  border: 6px solid #c8a96e;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 10px 0 rgba(200, 169, 110, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center; /* Ditambah agar isinya selalu ke tengah vertikal */
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar untuk Papan (Tetap sama) */
+.video-container::-webkit-scrollbar {
+  width: 10px;
+}
+.video-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.video-container::-webkit-scrollbar-thumb {
+  background: #c8a96e;
+  border-radius: 10px;
+}
+
+/* =========================================
+   HEADER VIDEO (Tetap sama)
+========================================= */
+.video-header {
+  text-align: center;
+  width: 100%;
+  background: #ffe082;
+  padding: 15px 20px;
+  border-radius: 16px;
+  border: 4px dashed #ffb300;
+  flex-shrink: 0;
+}
+
+.video-header h1 {
+  font-size: clamp(24px, 4vw, 38px);
+  color: #d84315;
+  text-shadow: 1px 1px 0px #fff;
+  margin-bottom: 5px;
+}
+
+.video-header p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4e342e;
+}
+
+/* =========================================
+   WRAPPER VIDEO YOUTUBE (BIAR RESPONSIF & PAS)
+========================================= */
+.video-wrapper {
+  width: 90%; /* Dikecilkan agar ada ruang sisa di kanan-kiri */
+  max-width: 560px; /* Maksimal lebarnya ditekan agar tidak kebesaran */
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 6px solid #8bc34a;
+  box-shadow: 0 8px 0 rgba(139, 195, 74, 0.5);
+  background-color: #000;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  margin: 0 auto; /* Memastikan video ke tengah posisinya */
+}
+
+.video-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #ffcc80;
+  color: #d84315;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 8px 20px;
+  border: 3px solid #d84315;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #d84315;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+  z-index: 100;
+}
+
+.btn-back:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #d84315;
+}
+
+/* =========================================
+   CONTAINER PAPAN VIDEO
+========================================= */
+.video-container {
+  /* Dikecilkan ukurannya agar tidak terlalu besar */
+  width: 80%;
+  max-width: 700px;
+  height: 80%;
+
+  /* Mendorong papan agak ke KANAN dan sedikit ke BAWAH agar pas dengan background kayu */
+  margin-left: 4%;
+  margin-top: 1%;
+
+  background: rgba(255, 250, 250, 0.95);
+  border: 6px solid #c8a96e;
+  border-radius: 24px;
+  padding: 20px; /* Padding dikurangi agar isinya padat */
+  box-shadow: 0 10px 0 rgba(200, 169, 110, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Jarak antar elemen dirapatkan */
+  align-items: center;
+  justify-content: center;
+
+  /* Mencegah scroll, mengunci konten di dalam */
+  overflow: hidden;
+}
+
+/* Scrollbar dihapus saja karena overflow sudah hidden */
+
+/* =========================================
+   HEADER VIDEO
+========================================= */
+.video-header {
+  text-align: center;
+  width: 100%; /* Disesuaikan agar tidak mentok ke pinggir container */
+  background: #ffe082;
+  padding: 10px 15px; /* Dikecilkan */
+  border-radius: 16px;
+  border: 4px dashed #ffb300;
+  flex-shrink: 0;
+}
+
+.video-header h1 {
+  font-size: clamp(15px, 2vw, 25px); /* Ukuran font dikecilkan sedikit */
+  color: #d84315;
+  text-shadow: 1px 1px 0px #fff;
+  margin-bottom: 2px;
+}
+
+.video-header p {
+  font-size: 15px; /* Ukuran font deskripsi dikecilkan */
+  font-weight: 600;
+  color: #4e342e;
+}
+
+/* =========================================
+   WRAPPER VIDEO YOUTUBE
+========================================= */
+.video-wrapper {
+  width: 90%;
+  max-width: 480px; /* Ukuran maksimal video ditekan agar jauh lebih kecil */
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 5px solid #8bc34a;
+  box-shadow: 0 6px 0 rgba(139, 195, 74, 0.5);
+  background-color: #000;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  margin: 0 auto;
+}
+
+.video-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =========================================
+   HEADER VIDEO
+========================================= */
+.video-header {
+  text-align: center;
+  width: 100%;
+  background: #ffe082;
+  padding: 15px 20px;
+  border-radius: 16px;
+  border: 4px dashed #ffb300;
+  flex-shrink: 0;
+}
+
+.video-header h1 {
+  font-size: clamp(24px, 4vw, 38px);
+  color: #d84315;
+  text-shadow: 1px 1px 0px #fff;
+  margin-bottom: 5px;
+}
+
+.video-header p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4e342e;
+}
+
+/* =========================================
+   WRAPPER VIDEO YOUTUBE (BIAR RESPONSIF)
+========================================= */
+.video-wrapper {
+  width: 100%;
+  max-width: 720px;
+  /* Memaksa rasio video 16:9 agar tidak gepeng */
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 6px solid #8bc34a; /* Border hijau ala alam */
+  box-shadow: 0 8px 0 rgba(139, 195, 74, 0.5);
+  background-color: #000;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.video-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =========================================
+   RESPONSIVE UNTUK HP
+========================================= */
+@media (max-width: 600px) {
+  .btn-back {
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .video-container {
+    width: 90%;
+    height: 85%;
+    padding: 20px 15px;
+  }
+}
