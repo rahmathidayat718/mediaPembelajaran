@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Baloo 2", cursive;
+}
+
+/* Hapus semua kode body dan game-area yang lama, ganti dengan ini: */
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* Pastikan lokasi file bg_kuis.png benar. Jika assets sejajar dengan folder css, ini sudah benar */
+  background: url("../assets/bg_kuis.png") center center / cover no-repeat;
+  background-color: #aed581; /* Warna cadangan jika gambar gagal dimuat */
+  color: #5a3200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tambahkan ini di bawah body di css/game.css jika ingin background sedikit redup */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* Gelap tipis 20% */
+  z-index: -1;
+}
+
+.game-area {
+  flex-grow: 1;
+  position: relative;
+  width: 100%; /* Tambahkan ini */
+  border: 6px solid #558b2f;
+  border-radius: 20px 20px 0 0;
+  /* Background area game dibuat transparan agar gambar background body terlihat */
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* TOMBOL KEMBALI */
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #ffcc80;
+  color: #d84315;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 8px 20px;
+  border: 3px solid #d84315;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #d84315;
+  z-index: 100;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+.btn-back:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #d84315;
+}
+
+/* WADAH UTAMA */
+.game-container {
+  width: 100%;
+  max-width: 800px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+/* HUD (Head-Up Display) - Skor dan Waktu */
+.hud {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+  z-index: 10;
+}
+
+.hud-box {
+  background: #fffafa;
+  border: 4px solid #c8a96e;
+  border-radius: 16px;
+  padding: 10px 25px;
+  font-size: 24px;
+  font-weight: 800;
+  box-shadow: 0 6px 0 rgba(200, 169, 110, 0.5);
+}
+
+.score-box {
+  color: #f57f17;
+}
+.time-box {
+  color: #d32f2f;
+}
+
+/* BARANG YANG JATUH */
+.falling-item {
+  position: absolute;
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+  /* Animasi jatuh dikendalikan oleh JS/CSS Keyframes */
+  animation: fall linear forwards;
+  transition: transform 0.1s;
+}
+
+.falling-item:active {
+  transform: scale(0.8);
+}
+
+@keyframes fall {
+  from {
+    top: -60px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+/* LAYAR OVERLAY (Start & Game Over) */
+.overlay-screen {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 250, 250, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 50;
+}
+
+.overlay-screen h2 {
+  font-size: 40px;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.overlay-screen p {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* TOMBOL AKSI */
+.btn-action {
+  background: #8bc34a;
+  color: white;
+  font-size: 26px;
+  font-weight: 800;
+  padding: 12px 30px;
+  border: 4px solid #558b2f;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #558b2f;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+.btn-action:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 #558b2f;
+}

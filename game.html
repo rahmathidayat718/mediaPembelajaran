@@ -1,16 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
-    <title>Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Prestasi - Game</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/game.css">
 </head>
 
 <body>
 
-    <h1>Game Sederhana</h1>
+    <a href="home.html" class="btn-back">⬅ Kembali</a>
 
-    <p>Tebak gambar nanti di sini.</p>
+    <div class="game-container">
 
+        <div class="hud">
+            <div class="hud-box score-box">
+                ⭐ Skor: <span id="scoreDisplay">0</span>
+            </div>
+            <div class="hud-box time-box">
+                ⏳ Waktu: <span id="timeDisplay">30</span>s
+            </div>
+        </div>
+
+        <div id="gameArea" class="game-area">
+
+            <div id="startScreen" class="overlay-screen">
+                <h2>Tangkap Bahan Fotosintesis!</h2>
+                <p>Klik ☀️, 💧, dan 💨 untuk memasak!<br>Awas, jangan klik 🔥, 🐛, dan 🗑️!</p>
+                <button id="startBtn" class="btn-action">Mulai Main! 🚀</button>
+            </div>
+
+            <div id="gameOverScreen" class="overlay-screen hidden">
+                <h2>Waktu Habis! ⏰</h2>
+                <p>Skor Akhirmu: <span id="finalScore">0</span> ⭐</p>
+                <button id="restartBtn" class="btn-action">Main Lagi 🔄</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
 </body>
 
 </html>
