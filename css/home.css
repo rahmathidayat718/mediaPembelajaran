@@ -26,7 +26,7 @@ body::before {
 
 /* =========================================
            SUN & BEE
-        ========================================= */
+========================================= */
 .sun {
   position: absolute;
   top: 22px;
@@ -52,7 +52,7 @@ body::before {
 
 /* =========================================
            SETTINGS
-        ========================================= */
+========================================= */
 .settings-btn {
   position: absolute;
   top: 16px;
@@ -78,7 +78,7 @@ body::before {
 
 /* =========================================
            LAYOUT WRAPPER
-        ========================================= */
+========================================= */
 .layout {
   position: relative;
   z-index: 10;
@@ -89,7 +89,7 @@ body::before {
 
 /* =========================================
            MAIN BOARD
-        ========================================= */
+========================================= */
 .main-board {
   width: 100%;
   animation: boardIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -119,13 +119,12 @@ body::before {
   font-weight: 800;
   color: #5a3200;
   margin-bottom: 12px;
-
   -webkit-text-stroke: 0.3px #3b2200;
 }
 
 /* =========================================
            MENU GRID
-        ========================================= */
+========================================= */
 .menu-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -181,7 +180,7 @@ body::before {
 }
 
 /* =========================================
-CHARACTER AREA
+CHARACTER AREA (DIPERBAIKI)
 ========================================= */
 
 /* 1. Kelinci dipindah ke Kanan Bawah */
@@ -213,23 +212,46 @@ CHARACTER AREA
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
 }
 
-/* 4. Style teks papan nama */
-.nama-text {
+/* 4. Wadah teks Nama & Email (Mengatur agar tersusun ke bawah dengan rapi) */
+.user-text-container {
   position: absolute;
-  top: 52%;
-  left: 40%;
-  right: 30%;
-  transform: translateY(-50%);
-  font-size: clamp(10px, 3vw, 12px);
-  font-weight: 700;
-  color: #5a3200;
+  top: 50%;
+  left: 55%; /* Digeser ke 55% supaya pas di tengah antara Avatar dan Daun */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%; /* Membatasi panjang teks agar tidak keluar batas */
+  z-index: 2;
   text-align: center;
+}
+
+/* 5. Teks Nama (Absolute dihapus agar tidak menabrak email) */
+.nama-text {
+  font-size: clamp(12px, 3vw, 15px);
+  font-weight: 800;
+  color: #5a3200;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Akan jadi titik-titik (...) kalau nama kepanjangan */
+  width: 100%;
+}
+
+/* 6. Teks Email */
+.email-text {
+  font-size: clamp(9px, 2vw, 11px);
+  color: #666;
+  font-weight: 600;
+  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
 }
 
-/* 5. Gambar Kelinci dengan animasi baru */
+/* 7. Gambar Kelinci */
 .kelinci-img {
   width: 300px;
   margin-top: 4px;
@@ -239,7 +261,7 @@ CHARACTER AREA
 
 /* =========================================
            BOTTOM BAR
-        ========================================= */
+========================================= */
 .bottom-area {
   position: absolute;
   bottom: 16px;
@@ -322,7 +344,7 @@ CHARACTER AREA
 
 /* =========================================
            ANIMATIONS
-        ========================================= */
+========================================= */
 @keyframes sunPulse {
   0%,
   100% {
@@ -391,7 +413,6 @@ CHARACTER AREA
   }
 }
 
-/* Ini dia Animasi Napas Kelincinya! */
 @keyframes kelinciNapas {
   0%,
   100% {
@@ -405,8 +426,6 @@ CHARACTER AREA
 /* =========================================
 RESPONSIVE
 ========================================= */
-
-/* Tablet / Mobile */
 @media (max-width: 600px) {
   .layout {
     max-width: 95vw;

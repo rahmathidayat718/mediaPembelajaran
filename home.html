@@ -8,53 +8,6 @@
 
     <link rel="stylesheet" href="css/home.css" />
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* Pastikan pembungkus papan nama menjadi acuan posisi absolut */
-        .papan-nama-wrap {
-            position: relative;
-            display: inline-block;
-        }
-
-        .user-text-container {
-            position: absolute;
-            top: 50%;
-            left: 53%;
-            /* Agak digeser ke kanan menghindari avatar */
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 55%;
-            /* Batasi area teks agar tidak menabrak daun di kanan */
-            z-index: 2;
-            text-align: center;
-        }
-
-        .nama-text {
-            font-size: 14px;
-            font-weight: 800;
-            color: #333;
-            line-height: 1.2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            /* Otomatis jadi ... kalau nama kepanjangan */
-            width: 100%;
-        }
-
-        .email-text {
-            font-size: 11px;
-            color: #555;
-            font-weight: 600;
-            line-height: 1.2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
