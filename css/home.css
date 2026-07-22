@@ -432,14 +432,80 @@ CHARACTER AREA (DIPERBAIKI)
 }
 
 /* =========================================
-RESPONSIVE
+RESPONSIVE (DIPERBAIKI UNTUK HP & TABLET)
 ========================================= */
+
+/* 1. Perbaiki ukuran kelinci secara global agar menyesuaikan wadahnya */
+.kelinci-img {
+  width: 100% !important;
+  height: auto;
+}
+
+/* 2. Tablet dan Layar Sedang (max-width: 900px) */
+@media (max-width: 900px) {
+  .character-area {
+    right: 5%;
+    bottom: 12%;
+    width: 110px; /* Kelinci sedikit dikecilkan */
+  }
+  .papan-nama-wrap {
+    width: 210px; /* Papan nama sedikit disesuaikan */
+  }
+}
+
+/* 3. Handphone (max-width: 600px) */
 @media (max-width: 600px) {
+  /* Dorong Papan Utama ke Bawah agar tidak menabrak Papan Nama */
   .layout {
     max-width: 95vw;
     padding: 0 8px;
+    margin-top: 50px;
   }
 
+  /* Papan Nama Dikecilkan */
+  .papan-nama-wrap {
+    width: 170px;
+    top: 12px;
+    left: 12px;
+  }
+
+  /* Amankan teks dari daun di layar sempit */
+  .user-text-container {
+    left: 28%;
+    right: 18%;
+  }
+  .nama-text {
+    font-size: 11px !important;
+  }
+  .email-text {
+    font-size: 8px !important;
+  }
+
+  /* Settings & Matahari Disesuaikan */
+  .settings-btn {
+    width: 36px;
+    height: 36px;
+    top: 12px;
+    right: 12px;
+    font-size: 18px;
+  }
+  .sun {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+  }
+  .sun::before {
+    font-size: 38px;
+  }
+
+  /* Kelinci dipindah ke atas Misi Hari Ini agar tidak tertutup Menu Utama */
+  .character-area {
+    right: 15px;
+    bottom: 75px;
+    width: 75px; /* Ukuran kelinci di HP */
+  }
+
+  /* Panel Misi ditarik agar rapi */
   .bottom-area {
     flex-direction: column;
     gap: 8px;
@@ -447,23 +513,31 @@ RESPONSIVE
     left: 10px;
     right: 10px;
   }
-
   .mission-panel {
     min-width: unset;
     width: 100%;
   }
 }
 
+/* 4. Handphone Layar Sangat Kecil (max-width: 380px) */
 @media (max-width: 380px) {
-  .sun {
-    width: 44px;
-    height: 44px;
-    top: 14px;
-  }
-  .sun::before {
-    font-size: 32px;
-  }
   .menu-grid {
     gap: 6px;
+  }
+  .layout {
+    margin-top: 60px; /* Dorong lebih bawah lagi */
+  }
+  .papan-nama-wrap {
+    width: 150px;
+  }
+  .nama-text {
+    font-size: 10px !important;
+  }
+  .email-text {
+    font-size: 7px !important;
+  }
+  .character-area {
+    width: 60px;
+    bottom: 70px;
   }
 }
