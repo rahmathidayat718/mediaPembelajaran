@@ -212,43 +212,51 @@ CHARACTER AREA (DIPERBAIKI)
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
 }
 
-/* 4. Wadah teks Nama & Email (Mengatur agar tersusun ke bawah dengan rapi) */
+/* 4. Kotak tak terlihat untuk membatasi area teks agar pas di area kosong */
 .user-text-container {
   position: absolute;
-  top: 50%;
-  left: 55%; /* Digeser ke 55% supaya pas di tengah antara Avatar dan Daun */
-  transform: translate(-50%, -50%);
+  top: 20%;
+  bottom: 15%;
+  left: 28%; /* Digeser lebih ke kiri mendekati avatar */
+  right: 11%; /* Diberi jarak aman lebih besar agar menjauhi daun */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%; /* Membatasi panjang teks agar tidak keluar batas */
   z-index: 2;
-  text-align: center;
 }
 
-/* 5. Teks Nama (Absolute dihapus agar tidak menabrak email) */
+/* 5. Teks Nama */
 .nama-text {
+  position: static !important;
+  transform: none !important;
   font-size: clamp(12px, 3vw, 15px);
   font-weight: 800;
   color: #5a3200;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* Akan jadi titik-titik (...) kalau nama kepanjangan */
-  width: 100%;
-}
-
-/* 6. Teks Email */
-.email-text {
-  font-size: clamp(9px, 2vw, 11px);
-  color: #666;
-  font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
+  text-align: center;
+  margin-bottom: 2px;
+  user-select: none;
+}
+
+/* 6. Teks Email */
+.email-text {
+  position: static !important;
+  transform: none !important;
+  font-size: clamp(8px, 1.8vw, 10px); /* Ukuran font dikecilkan sedikit */
+  color: #666;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+  user-select: none;
 }
 
 /* 7. Gambar Kelinci */
