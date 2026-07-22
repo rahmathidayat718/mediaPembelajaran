@@ -4,16 +4,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Adventure Belajar</title>
 
     <link rel="stylesheet" href="css/home.css" />
-
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .user-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Sesuaikan margin/posisi ini dengan desain CSS papan_nama.png kamu */
+            margin-top: -40px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .email-text {
+            font-size: 12px;
+            color: #555;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
-
     <!-- Sun -->
     <div class="sun"></div>
 
@@ -22,11 +38,9 @@
 
     <!-- LAYOUT -->
     <div class="layout">
-
         <!-- MAIN BOARD -->
         <div class="main-board">
             <div class="board-frame">
-
                 <!-- Inner parchment area -->
                 <div class="board-inner">
                     <div class="board-subtitle">FOTOSINTESIS 🌟</div>
@@ -46,34 +60,34 @@
                         </a>
                     </div>
                 </div>
-
             </div>
+
             <img src="assets/home/progress_bar.png" alt="Kemajuan Petualangan" class="progress-label">
             <div class="progress-panel">
-
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill"></div>
                     <div class="bird">🐦</div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- CHARACTER AREA -->
     <div class="character-area">
         <div class="papan-nama-wrap">
             <img src="assets/home/papan_nama.png" alt="Papan Nama" class="papan-nama-img">
-            <span class="nama-text">Nama Google</span>
+
+            <!-- Area Text Nama & Email -->
+            <div class="user-text-container">
+                <span class="nama-text" id="display-nama">Nama Google</span>
+                <span class="email-text" id="display-email">email@google.com</span>
+            </div>
         </div>
         <img src="assets/home/kelinci.png" alt="Kelinci" class="kelinci-img">
     </div>
 
     <!-- BOTTOM BAR -->
-
-
     <div class="bottom-area">
-
         <div class="mission-panel">
             <div class="mission-title">📋 Misi Hari Ini</div>
             <div class="mission-item">
@@ -83,6 +97,22 @@
         </div>
     </div>
 
+    <!-- Script untuk Mengambil Data dari LocalStorage -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ambil data yang disimpan saat login di index.html
+            const nama = localStorage.getItem("userNama");
+            const email = localStorage.getItem("userEmail");
+
+            // Jika ada datanya, ganti teks default dengan data tersebut
+            if (nama) {
+                document.getElementById("display-nama").innerText = nama;
+            }
+            if (email) {
+                document.getElementById("display-email").innerText = email;
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Fotosis</title>
 
     <!-- CSS -->
@@ -12,12 +11,34 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <style>
+        .login-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .input-nama {
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            width: 100%;
+            max-width: 250px;
+            font-family: 'Baloo 2', cursive;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-
     <section class="hero">
-
         <!-- Glow Matahari -->
         <div class="sun-glow"></div>
 
@@ -31,7 +52,6 @@
 
         <!-- Content -->
         <div class="content">
-
             <h1 class="title">Fotosis</h1>
 
             <div class="subtitle-box">
@@ -41,17 +61,61 @@
                 </div>
             </div>
 
-            <button class="start-btn" id="startBtn">
-                Masuk
-            </button>
+            <!-- Area Login -->
+            <div class="login-section">
+                <!-- Form Input Nama -->
+                <input type="text" id="inputNama" class="input-nama" placeholder="Masukkan Nama Kamu..." required />
 
+                <!-- Konfigurasi Google Login -->
+                <div id="g_id_onload"
+                    data-client_id="55252416794-aueasmmutl5jokstkv0a6jmieo60o8v7.apps.googleusercontent.com"
+                    data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse"
+                    data-auto_prompt="false">
+                </div>
+
+                <!-- Tombol Google Login -->
+                <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_blue"
+                    data-text="signin_with" data-size="large" data-logo_alignment="left">
+                </div>
+            </div>
         </div>
-
     </section>
 
-    <!-- JS -->
-    <script src="js/app.js"></script>
+    <!-- JS untuk Handle Login & Pindah Halaman -->
+    <script>
+        function decodeJwtResponse(token) {
+            let base64Url = token.split('.')[1];
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
 
+        function handleCredentialResponse(response) {
+            // Ambil nama dari input
+            const namaInput = document.getElementById('inputNama').value;
+
+            // Validasi: pastikan nama sudah diisi
+            if (!namaInput || namaInput.trim() === "") {
+                alert("Halo! Tolong masukkan nama kamu dulu ya sebelum login.");
+                return;
+            }
+
+            // Decode data dari Google
+            const responsePayload = decodeJwtResponse(response.credential);
+            const emailGoogle = responsePayload.email;
+
+            // Simpan nama custom dan email ke LocalStorage
+            localStorage.setItem("userNama", namaInput);
+            localStorage.setItem("userEmail", emailGoogle);
+
+            // Arahkan ke halaman home
+            window.location.href = "home.html";
+        }
+    </script>
+
+    <script src="js/app.js"></script>
 </body>
 
 </html>
