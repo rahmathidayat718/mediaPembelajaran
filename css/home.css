@@ -7,14 +7,14 @@
 
 body {
   width: 100vw;
-  min-height: 100vh; /* Menggunakan min-height agar bisa di-scroll jika layar kurang panjang */
-  overflow-y: auto; /* Membolehkan halaman digeser/scroll ke bawah di HP */
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: url("../assets/home/bg1.png") center center / cover no-repeat;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 0 20px 0; /* Memberi jarak aman atas dan bawah */
 }
 
 body::before {
@@ -26,7 +26,7 @@ body::before {
 }
 
 /* =========================================
-           SUN & BEE
+           SUN
 ========================================= */
 .sun {
   position: absolute;
@@ -181,45 +181,41 @@ body::before {
 }
 
 /* =========================================
-CHARACTER AREA (DIPERBAIKI)
+CHARACTER AREA (PAPAN NAMA & KELINCI)
 ========================================= */
 
-/* 1. Kelinci dipindah ke Kanan Bawah */
 .character-area {
   position: absolute;
-  right: 20%;
-  bottom: 15%;
+  right: 15%;
+  bottom: 12%;
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
+  width: 140px;
 }
 
-/* 2. Papan nama dipaksa nempel di Kiri Atas */
 .papan-nama-wrap {
   position: fixed;
   top: 16px;
   left: 16px;
-  width: 240px;
+  width: 230px;
   max-width: 45vw;
   z-index: 20;
 }
 
-/* 3. Style gambar papan nama */
 .papan-nama-img {
   width: 100%;
   display: block;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
 }
 
-/* 4. Kotak tak terlihat untuk membatasi area teks agar pas di area kosong */
 .user-text-container {
   position: absolute;
   top: 20%;
   bottom: 15%;
-  left: 28%; /* Digeser lebih ke kiri mendekati avatar */
-  right: 11%; /* Diberi jarak aman lebih besar agar menjauhi daun */
+  left: 28%;
+  right: 11%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,11 +223,10 @@ CHARACTER AREA (DIPERBAIKI)
   z-index: 2;
 }
 
-/* 5. Teks Nama */
 .nama-text {
   position: static !important;
   transform: none !important;
-  font-size: clamp(12px, 3vw, 15px);
+  font-size: clamp(11px, 2.5vw, 14px);
   font-weight: 800;
   color: #5a3200;
   line-height: 1.1;
@@ -244,11 +239,10 @@ CHARACTER AREA (DIPERBAIKI)
   user-select: none;
 }
 
-/* 6. Teks Email */
 .email-text {
   position: static !important;
   transform: none !important;
-  font-size: clamp(8px, 1.8vw, 10px); /* Ukuran font dikecilkan sedikit */
+  font-size: clamp(8px, 1.8vw, 10px);
   color: #666;
   font-weight: 600;
   line-height: 1.1;
@@ -260,16 +254,15 @@ CHARACTER AREA (DIPERBAIKI)
   user-select: none;
 }
 
-/* 7. Gambar Kelinci */
 .kelinci-img {
-  width: 300px;
+  width: 220px;
   margin-top: 4px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
   animation: kelinciNapas 3s ease-in-out infinite;
 }
 
 /* =========================================
-           BOTTOM BAR
+           BOTTOM BAR (PROGRESS & MISI)
 ========================================= */
 .bottom-area {
   position: absolute;
@@ -364,22 +357,6 @@ CHARACTER AREA (DIPERBAIKI)
   }
 }
 
-@keyframes beeFly {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(10px, -9px) rotate(5deg);
-  }
-  50% {
-    transform: translate(4px, -16px) rotate(-5deg);
-  }
-  75% {
-    transform: translate(-7px, -7px) rotate(3deg);
-  }
-}
-
 @keyframes cardShine {
   0% {
     left: -70px;
@@ -433,92 +410,62 @@ CHARACTER AREA (DIPERBAIKI)
 }
 
 /* =========================================
-RESPONSIVE (DIPERBAIKI UNTUK HP & TABLET)
+RESPONSIVE KHUSUS HP (MEDIA QUERY)
 ========================================= */
-
-/* 1. Perbaiki ukuran kelinci secara global agar menyesuaikan wadahnya */
-.kelinci-img {
-  width: 100% !important;
-  height: auto;
-}
-
-/* 2. Tablet dan Layar Sedang (max-width: 900px) */
-@media (max-width: 900px) {
-  .character-area {
-    right: 5%;
-    bottom: 12%;
-    width: 110px; /* Kelinci sedikit dikecilkan */
-  }
-  .papan-nama-wrap {
-    width: 210px; /* Papan nama sedikit disesuaikan */
-  }
-}
-
-/* 3. Handphone (max-width: 600px) */
 @media (max-width: 600px) {
   body {
-    align-items: flex-start; /* Mengatur posisi dari atas di layar HP */
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 90px 12px 20px 12px;
   }
 
   .layout {
-    max-width: 95vw;
-    padding: 0 8px;
-    margin-top: 10px;
+    max-width: 100%;
+    padding: 0;
   }
 
   .papan-nama-wrap {
-    width: 200px;
-    top: 12px;
-    left: 12px;
-  }
-
-  .user-text-container {
-    left: 28%;
-    right: 18%;
-  }
-  .nama-text {
-    font-size: 11px !important;
-  }
-  .email-text {
-    font-size: 8px !important;
+    width: 185px;
+    top: 10px;
+    left: 10px;
   }
 
   .settings-btn {
-    width: 36px;
-    height: 36px;
-    top: 12px;
-    right: 12px;
-    font-size: 18px;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
   }
 
   .sun {
-    width: 40px;
-    height: 40px;
-    top: 15px;
+    width: 45px;
+    height: 45px;
+    top: 12px;
   }
   .sun::before {
-    font-size: 38px;
+    font-size: 45px;
   }
 
-  /* Kelinci kita posisikan agar pas tidak keluar layar */
+  /* Kelinci diposisikan natural di bawah menu utama */
   .character-area {
     position: relative;
     right: unset;
     bottom: unset;
-    width: 80px;
-    margin: 20px auto 10px auto;
-    display: flex;
-    align-items: center;
+    width: 100px;
+    margin: 15px auto 5px auto;
+  }
+  .kelinci-img {
+    width: 100%;
   }
 
-  /* Panel bawah dibuat berderet rapi ke bawah dan tidak terpotong */
+  /* Panel bawah berderet ke bawah agar tidak kepotong */
   .bottom-area {
     position: relative;
     bottom: unset;
     left: unset;
     right: unset;
-    width: 95vw;
-    margin: 10px auto;
+    width: 100%;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -526,28 +473,6 @@ RESPONSIVE (DIPERBAIKI UNTUK HP & TABLET)
 
   .mission-panel {
     width: 100%;
-  }
-}
-
-/* 4. Handphone Layar Sangat Kecil (max-width: 380px) */
-@media (max-width: 380px) {
-  .menu-grid {
-    gap: 6px;
-  }
-  .layout {
-    margin-top: 60px; /* Dorong lebih bawah lagi */
-  }
-  .papan-nama-wrap {
-    width: 150px;
-  }
-  .nama-text {
-    font-size: 10px !important;
-  }
-  .email-text {
-    font-size: 7px !important;
-  }
-  .character-area {
-    width: 60px;
-    bottom: 70px;
+    min-width: unset;
   }
 }
